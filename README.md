@@ -1,4 +1,4 @@
-# Reward System
+# Reward Web Api
 
 This is a Spring Boot-based service designed to retrieve reward points for customers based on transactions stored in a PostgreSQL database.
 
