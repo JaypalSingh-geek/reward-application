@@ -77,3 +77,231 @@
 2024-09-25 00:52:13.158  INFO 6995 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-09-25 00:52:13.158  INFO 6995 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
 2024-09-25 00:52:13.159  INFO 6995 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-09-25 11:46:23.211  INFO 11173 --- [main] c.infy.rewards.RewardsApplicationTests   : Starting RewardsApplicationTests using Java 1.8.0_421 on Jaypals-Laptop.local with PID 11173 (started by jaypalsingh in /Applications/rewards)
+2024-09-25 11:46:23.212 DEBUG 11173 --- [main] c.infy.rewards.RewardsApplicationTests   : Running with Spring Boot v2.7.13, Spring v5.3.28
+2024-09-25 11:46:23.212  INFO 11173 --- [main] c.infy.rewards.RewardsApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-09-25 11:46:23.535  INFO 11173 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-25 11:46:23.553  INFO 11173 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2024-09-25 11:46:23.755  INFO 11173 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-25 11:46:23.776  INFO 11173 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-25 11:46:23.830  INFO 11173 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-25 11:46:23.872  INFO 11173 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-25 11:46:23.999  INFO 11173 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-25 11:46:24.007  INFO 11173 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-09-25 11:46:24.294  INFO 11173 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-25 11:46:24.298  INFO 11173 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:46:24.612  WARN 11173 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-25 11:46:24.866  INFO 11173 --- [main] c.infy.rewards.RewardsApplicationTests   : Started RewardsApplicationTests in 1.755 seconds (JVM running for 2.098)
+2024-09-25 11:46:24.904  INFO 11173 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.infy.rewards.controller.test.RewardControllerTest], using SpringBootContextLoader
+2024-09-25 11:46:24.905  INFO 11173 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.infy.rewards.controller.test.RewardControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-09-25 11:46:24.905  INFO 11173 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.infy.rewards.controller.test.RewardControllerTest]: RewardControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-25 11:46:24.915  INFO 11173 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.infy.rewards.RewardsApplication for test class com.infy.rewards.controller.test.RewardControllerTest
+2024-09-25 11:46:24.917  INFO 11173 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-09-25 11:46:24.918  INFO 11173 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@675bf541, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2aac87ab, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@c14bbab, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@72c5064f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4a0c04ab, org.springframework.test.context.support.DirtiesContextTestExecutionListener@453439e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2d33795c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@779ef5cb, org.springframework.test.context.event.EventPublishingTestExecutionListener@5d9d8ecf, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@43cc7951, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@758311ed, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7533923b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@446981a4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@644f6e89, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@9ae0794]
+2024-09-25 11:46:24.930  INFO 11173 --- [main] c.i.r.c.test.RewardControllerTest        : Starting RewardControllerTest using Java 1.8.0_421 on Jaypals-Laptop.local with PID 11173 (started by jaypalsingh in /Applications/rewards)
+2024-09-25 11:46:24.930 DEBUG 11173 --- [main] c.i.r.c.test.RewardControllerTest        : Running with Spring Boot v2.7.13, Spring v5.3.28
+2024-09-25 11:46:24.930  INFO 11173 --- [main] c.i.r.c.test.RewardControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2024-09-25 11:46:25.005  INFO 11173 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-25 11:46:25.010  INFO 11173 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 2 JPA repository interfaces.
+2024-09-25 11:46:25.101  INFO 11173 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-25 11:46:25.103  INFO 11173 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-09-25 11:46:25.125  INFO 11173 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-09-25 11:46:25.125  INFO 11173 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-09-25 11:46:25.172  INFO 11173 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-25 11:46:25.173  INFO 11173 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:46:25.225  WARN 11173 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-25 11:46:25.394  INFO 11173 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-09-25 11:46:25.394  INFO 11173 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-09-25 11:46:25.394  INFO 11173 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-09-25 11:46:25.401  INFO 11173 --- [main] c.i.r.c.test.RewardControllerTest        : Started RewardControllerTest in 0.481 seconds (JVM running for 2.633)
+2024-09-25 11:46:25.422  INFO 11173 --- [main] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 11:46:25.449  INFO 11173 --- [main] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 11:46:25.449  WARN 11173 --- [main] c.i.r.a.GlobalRewardsExceptionHandler    : Reward not found: No rewards found
+2024-09-25 11:46:25.512  INFO 11173 --- [main] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 11:46:25.512 ERROR 11173 --- [main] c.i.rewards.service.RewardServiceImpl    : Error occurred while fetching transactions: Database error
+2024-09-25 11:46:25.515  INFO 11173 --- [main] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 11:46:25.515  WARN 11173 --- [main] c.i.rewards.service.RewardServiceImpl    : No transactions found.
+2024-09-25 11:46:25.523  INFO 11173 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:46:25.523  INFO 11173 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-25 11:46:25.524  INFO 11173 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-25 11:46:25.526  INFO 11173 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:46:25.526  INFO 11173 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-09-25 11:46:25.527  INFO 11173 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-09-25 11:51:04.756  INFO 11303 --- [main] c.infy.rewards.RewardsApplicationTests   : Starting RewardsApplicationTests using Java 1.8.0_421 on Jaypals-Laptop.local with PID 11303 (started by jaypalsingh in /Applications/rewards)
+2024-09-25 11:51:04.757 DEBUG 11303 --- [main] c.infy.rewards.RewardsApplicationTests   : Running with Spring Boot v2.7.13, Spring v5.3.28
+2024-09-25 11:51:04.757  INFO 11303 --- [main] c.infy.rewards.RewardsApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-09-25 11:51:05.070  INFO 11303 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-25 11:51:05.088  INFO 11303 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2024-09-25 11:51:05.289  INFO 11303 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-25 11:51:05.307  INFO 11303 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-25 11:51:05.365  INFO 11303 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-25 11:51:05.407  INFO 11303 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-25 11:51:05.521  INFO 11303 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-25 11:51:05.529  INFO 11303 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-09-25 11:51:05.820  INFO 11303 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-25 11:51:05.823  INFO 11303 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:51:06.117  WARN 11303 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-25 11:51:06.368  INFO 11303 --- [main] c.infy.rewards.RewardsApplicationTests   : Started RewardsApplicationTests in 1.704 seconds (JVM running for 2.014)
+2024-09-25 11:51:06.403  INFO 11303 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.infy.rewards.controller.test.RewardControllerTest], using SpringBootContextLoader
+2024-09-25 11:51:06.404  INFO 11303 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.infy.rewards.controller.test.RewardControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-09-25 11:51:06.404  INFO 11303 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.infy.rewards.controller.test.RewardControllerTest]: RewardControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-25 11:51:06.411  INFO 11303 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.infy.rewards.RewardsApplication for test class com.infy.rewards.controller.test.RewardControllerTest
+2024-09-25 11:51:06.411  INFO 11303 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2024-09-25 11:51:06.412  INFO 11303 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@54780c40, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6ac83e67, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4d91d2da, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@12811f95, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@68f1b89, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2d1f3639, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6e5b3642, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@74bcf1ab, org.springframework.test.context.event.EventPublishingTestExecutionListener@a11efe6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e6bbe63, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@69356aca, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7a17ffee, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7ffc4195, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7ce760af, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3e4636c3]
+2024-09-25 11:51:06.427  INFO 11303 --- [main] c.i.r.c.test.RewardControllerTest        : Starting RewardControllerTest using Java 1.8.0_421 on Jaypals-Laptop.local with PID 11303 (started by jaypalsingh in /Applications/rewards)
+2024-09-25 11:51:06.427 DEBUG 11303 --- [main] c.i.r.c.test.RewardControllerTest        : Running with Spring Boot v2.7.13, Spring v5.3.28
+2024-09-25 11:51:06.427  INFO 11303 --- [main] c.i.r.c.test.RewardControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2024-09-25 11:51:06.504  INFO 11303 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-25 11:51:06.508  INFO 11303 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 2 JPA repository interfaces.
+2024-09-25 11:51:06.595  INFO 11303 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-25 11:51:06.598  INFO 11303 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-09-25 11:51:06.608  INFO 11303 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-09-25 11:51:06.608  INFO 11303 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-09-25 11:51:06.653  INFO 11303 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-25 11:51:06.653  INFO 11303 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:51:06.705  WARN 11303 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-25 11:51:06.853  INFO 11303 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-09-25 11:51:06.853  INFO 11303 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-09-25 11:51:06.854  INFO 11303 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-09-25 11:51:06.860  INFO 11303 --- [main] c.i.r.c.test.RewardControllerTest        : Started RewardControllerTest in 0.447 seconds (JVM running for 2.506)
+2024-09-25 11:51:06.881  INFO 11303 --- [main] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 11:51:06.897  INFO 11303 --- [main] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 11:51:06.899  WARN 11303 --- [main] c.i.r.a.GlobalRewardsExceptionHandler    : Reward not found: No rewards found
+2024-09-25 11:51:06.966  INFO 11303 --- [main] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 11:51:06.967 ERROR 11303 --- [main] c.i.rewards.service.RewardServiceImpl    : Error occurred while fetching transactions: Database error
+2024-09-25 11:51:06.969  INFO 11303 --- [main] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 11:51:06.969  WARN 11303 --- [main] c.i.rewards.service.RewardServiceImpl    : No transactions found.
+2024-09-25 11:51:06.976  INFO 11303 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:51:06.978  INFO 11303 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-25 11:51:06.980  INFO 11303 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-25 11:51:06.982  INFO 11303 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 11:51:06.983  INFO 11303 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-09-25 11:51:06.984  INFO 11303 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-09-25 16:51:42.254  INFO 14487 --- [restartedMain] com.infy.rewards.RewardsApplication      : Starting RewardsApplication using Java 1.8.0_292 on Jaypals-Laptop.local with PID 14487 (/Applications/rewards/target/classes started by jaypalsingh in /Applications/rewards)
+2024-09-25 16:51:42.255 DEBUG 14487 --- [restartedMain] com.infy.rewards.RewardsApplication      : Running with Spring Boot v2.7.13, Spring v5.3.28
+2024-09-25 16:51:42.256  INFO 14487 --- [restartedMain] com.infy.rewards.RewardsApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-09-25 16:51:42.318  INFO 14487 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-25 16:51:42.318  INFO 14487 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-25 16:51:42.891  INFO 14487 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-25 16:51:42.962  INFO 14487 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 2 JPA repository interfaces.
+2024-09-25 16:51:43.485  INFO 14487 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2024-09-25 16:51:43.491  INFO 14487 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-25 16:51:43.491  INFO 14487 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2024-09-25 16:51:43.544  INFO 14487 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-25 16:51:43.544  INFO 14487 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1225 ms
+2024-09-25 16:51:43.655  INFO 14487 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-25 16:51:43.674  INFO 14487 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-25 16:51:43.745  INFO 14487 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-25 16:51:43.798  INFO 14487 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-25 16:51:43.893  INFO 14487 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-25 16:51:43.905  INFO 14487 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-09-25 16:51:44.288  INFO 14487 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-25 16:51:44.293  INFO 14487 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-25 16:51:44.578  WARN 14487 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-25 16:51:45.025  INFO 14487 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-25 16:51:45.054  INFO 14487 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2024-09-25 16:51:45.063  INFO 14487 --- [restartedMain] com.infy.rewards.RewardsApplication      : Started RewardsApplication in 3.071 seconds (JVM running for 3.648)
+2024-09-25 16:51:54.620  INFO 14487 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-25 16:51:54.622  INFO 14487 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-25 16:51:54.624  INFO 14487 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-09-25 16:51:54.642  INFO 14487 --- [http-nio-8082-exec-1] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 16:51:54.656  INFO 14487 --- [http-nio-8082-exec-1] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 16:51:54.717 DEBUG 14487 --- [http-nio-8082-exec-1] org.hibernate.SQL                        : 
+    select
+        transactio0_.id as id1_1_,
+        transactio0_.amount as amount2_1_,
+        transactio0_.customer_id as customer4_1_,
+        transactio0_.transaction_date as transact3_1_ 
+    from
+        transactions transactio0_
+2024-09-25 16:51:54.727 DEBUG 14487 --- [http-nio-8082-exec-1] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 16:51:54.729 TRACE 14487 --- [http-nio-8082-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST001]
+2024-09-25 16:51:54.732 DEBUG 14487 --- [http-nio-8082-exec-1] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 16:51:54.732 TRACE 14487 --- [http-nio-8082-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST002]
+2024-09-25 16:52:26.014  INFO 14487 --- [http-nio-8082-exec-5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 232 ms
+2024-09-25 16:52:37.977  INFO 14487 --- [http-nio-8082-exec-6] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 16:52:37.982  INFO 14487 --- [http-nio-8082-exec-6] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 16:52:37.988 DEBUG 14487 --- [http-nio-8082-exec-6] org.hibernate.SQL                        : 
+    select
+        transactio0_.id as id1_1_,
+        transactio0_.amount as amount2_1_,
+        transactio0_.customer_id as customer4_1_,
+        transactio0_.transaction_date as transact3_1_ 
+    from
+        transactions transactio0_
+2024-09-25 16:52:37.995 DEBUG 14487 --- [http-nio-8082-exec-6] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 16:52:37.997 TRACE 14487 --- [http-nio-8082-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST001]
+2024-09-25 16:52:37.999 DEBUG 14487 --- [http-nio-8082-exec-6] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 16:52:38.000 TRACE 14487 --- [http-nio-8082-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST002]
+2024-09-25 17:06:34.898  WARN 14487 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m20s807ms).
+2024-09-25 17:21:49.762  WARN 14487 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m44s773ms).
+2024-09-25 17:45:52.568  WARN 14487 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m2s805ms).
+2024-09-25 17:48:44.495  WARN 14487 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m51s928ms).
+2024-09-25 18:05:37.158  INFO 14487 --- [http-nio-8082-exec-2] c.i.rewards.controller.RewardController  : Received request to calculate rewards.
+2024-09-25 18:05:37.165  INFO 14487 --- [http-nio-8082-exec-2] c.i.rewards.service.RewardServiceImpl    : Calculating rewards for all customers.
+2024-09-25 18:05:37.168 DEBUG 14487 --- [http-nio-8082-exec-2] org.hibernate.SQL                        : 
+    select
+        transactio0_.id as id1_1_,
+        transactio0_.amount as amount2_1_,
+        transactio0_.customer_id as customer4_1_,
+        transactio0_.transaction_date as transact3_1_ 
+    from
+        transactions transactio0_
+2024-09-25 18:05:37.172 DEBUG 14487 --- [http-nio-8082-exec-2] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 18:05:37.174 TRACE 14487 --- [http-nio-8082-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST001]
+2024-09-25 18:05:37.176 DEBUG 14487 --- [http-nio-8082-exec-2] org.hibernate.SQL                        : 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.customer_id as customer2_0_0_,
+        customer0_.email as email3_0_0_,
+        customer0_.name as name4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.customer_id=?
+2024-09-25 18:05:37.177 TRACE 14487 --- [http-nio-8082-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [CUST002]
