@@ -1,7 +1,6 @@
 package com.infy.rewards.service.impl.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -9,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +23,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.infy.rewards.entity.Customer;
 import com.infy.rewards.entity.Transaction;
-import com.infy.rewards.exception.RewardNotFoundException;
 import com.infy.rewards.repository.TransactionRepository;
 import com.infy.rewards.response.model.CustomerReward;
 import com.infy.rewards.service.impl.RewardServiceImpl;
@@ -46,20 +45,42 @@ class RewardServiceImplTest {
 	}
 
 	@Test
-	void testCalculateRewards_SuccessfulCalculation() {
-		Customer customer1 = new Customer("CUST002", "John Doe", "john@example.com");
-		Customer customer2 = new Customer("CUST001", "Jane Doe", "jane@example.com");
+	void testCreateCustomerReward() {
+		// Set up a mock transaction
+		Customer customer = new Customer("CUST001", "John Doe", "john.doe@example.com");
+		Transaction transaction = new Transaction(customer, new BigDecimal("120"), LocalDateTime.now());
 
-		Transaction transaction1 = new Transaction(customer1, new BigDecimal("150"), LocalDateTime.now());
-		Transaction transaction2 = new Transaction(customer2, new BigDecimal("50"), LocalDateTime.now());
-		List<Transaction> transactions = Arrays.asList(transaction1, transaction2);
+		// Invoke createCustomerReward method
+		CustomerReward reward = rewardService.createCustomerReward(transaction);
 
-		when(transactionRepository.findAll()).thenReturn(transactions);
-		Map<String, CustomerReward> rewards = rewardService.calculateRewards();
+		// Validate the created CustomerReward object
+		assertEquals("CUST001", reward.getCustomerId());
+		assertEquals("John Doe", reward.getName());
+		assertEquals("john.doe@example.com", reward.getEmail());
+		assertEquals(90, reward.getTotalPoints()); // Assuming 90 points for $120
+		Map<String, Integer> expectedMonthlyPoints = new HashMap<>();
+		expectedMonthlyPoints.put(transaction.getTransactionDate().getMonth().toString(), 90);
+		assertEquals(expectedMonthlyPoints, reward.getMonthlyPoints());
+	}
 
-		assertEquals(2, rewards.size());
-		assertReward(rewards.get("CUST002"), 150, 150);
-		assertReward(rewards.get("CUST001"), 0, 0);
+	@Test
+	void testAggregateRewards() {
+		CustomerReward existingReward = new CustomerReward();
+		existingReward.setTotalPoints(100);
+		Map<String, Integer> existingMonthlyPoints = new HashMap<>();
+		existingMonthlyPoints.put("OCTOBER", 50);
+		existingReward.setMonthlyPoints(existingMonthlyPoints);
+
+		CustomerReward newReward = new CustomerReward();
+		newReward.setTotalPoints(150);
+		Map<String, Integer> newMonthlyPoints = new HashMap<>();
+		newMonthlyPoints.put("OCTOBER", 100);
+		newReward.setMonthlyPoints(newMonthlyPoints);
+		CustomerReward aggregatedReward = rewardService.aggregateRewards(existingReward, newReward);
+
+		// Validate the aggregated results
+		assertEquals(250, aggregatedReward.getTotalPoints()); // 100 + 150
+		assertEquals(150, aggregatedReward.getMonthlyPoints().get("OCTOBER")); // 50 + 100
 	}
 
 	@Test
@@ -90,31 +111,6 @@ class RewardServiceImplTest {
 	}
 
 	@Test
-	void testCalculateRewards_ExceptionDuringFetch() {
-		when(transactionRepository.findAll()).thenThrow(new RuntimeException("Database error"));
-		RewardNotFoundException exception = assertThrows(RewardNotFoundException.class,
-				() -> rewardService.calculateRewards());
-		assertEquals("Failed to fetch transactions", exception.getMessage());
-		assertEquals("REWARD_NOT_FOUND", exception.getErrorCode());
-	}
-
-	@Test
-	void testCalculateRewards_MultipleTransactionsForSameCustomer() {
-		Customer customer = new Customer("CUST001", "John Doe", "john@example.com");
-		Transaction transaction1 = new Transaction(customer, new BigDecimal("100"), LocalDateTime.now());
-		Transaction transaction2 = new Transaction(customer, new BigDecimal("150"), LocalDateTime.now());
-		List<Transaction> transactions = Arrays.asList(transaction1, transaction2);
-
-		when(transactionRepository.findAll()).thenReturn(transactions);
-		Map<String, CustomerReward> rewards = rewardService.calculateRewards();
-
-		assertEquals(1, rewards.size());
-		CustomerReward reward = rewards.get("CUST001");
-		assertEquals(200, reward.getTotalPoints());
-		assertEquals(200, reward.getMonthlyPoints());
-	}
-
-	@Test
 	@DisplayName("Test calculatePoints for various purchase amounts")
 	void testCalculatePoints() {
 		assertRewardPoints(new BigDecimal("120"), 90);
@@ -128,11 +124,16 @@ class RewardServiceImplTest {
 		assertEquals(0, rewardService.calculateRewardPoints(null));
 	}
 
-	private void assertReward(CustomerReward reward, int expectedMonthlyPoints, int expectedTotalPoints) {
+	@Test
+	private void assertReward(CustomerReward reward, String expectedName, String expectedEmail,
+			Map<String, Integer> expectedMonthlyPoints, int expectedTotalPoints) {
+		assertEquals(expectedName, reward.getName());
+		assertEquals(expectedEmail, reward.getEmail());
 		assertEquals(expectedMonthlyPoints, reward.getMonthlyPoints());
 		assertEquals(expectedTotalPoints, reward.getTotalPoints());
 	}
 
+	@Test
 	private void assertRewardPoints(BigDecimal amount, int expectedPoints) {
 		assertEquals(expectedPoints, rewardService.calculateRewardPoints(amount));
 	}

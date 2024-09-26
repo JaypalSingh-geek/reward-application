@@ -2,6 +2,7 @@ package com.infy.rewards.service.impl;
 
 import java.math.BigDecimal;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,12 +22,10 @@ import com.infy.rewards.service.RewardServiceIf;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The implementation class to retrieve calculated Rewards Response.
- * 
- * This class handles the calculation of reward points based on customer
- * transactions. It retrieves transactions from the repository and processes
- * them to calculate rewards.
- * 
+ * The implementation class to retrieve calculated Rewards Response. This class
+ * handles the calculation of reward points based on customer transactions. It
+ * retrieves transactions from the repository and processes them to calculate
+ * rewards.
  */
 @Slf4j
 @Service
@@ -34,6 +33,9 @@ public class RewardServiceImpl implements RewardServiceIf {
 
 	@Autowired
 	private TransactionRepository transactionRepository;
+
+	private static final BigDecimal THRESHOLD_ONE = new BigDecimal("100");
+	private static final BigDecimal THRESHOLD_TWO = new BigDecimal("50");
 
 	/**
 	 * Calculates rewards for all customers based on their transactions.
@@ -45,21 +47,13 @@ public class RewardServiceImpl implements RewardServiceIf {
 	@Transactional
 	public Map<String, CustomerReward> calculateRewards() {
 		log.info("Calculating rewards for all customers.");
-		List<Transaction> transactions;
 
-		try {
-			transactions = transactionRepository.findAll();
-			log.info("Number of transactions fetched: {}", transactions != null ? transactions.size() : "null");
-		} catch (Exception e) {
-			log.error("Error occurred while fetching transactions: {}", e.getMessage());
-			throw new RewardNotFoundException("Failed to fetch transactions", "REWARD_NOT_FOUND", e);
-		}
-
-		// Handle the case where transactions are null or empty
-		if (transactions == null || transactions.isEmpty()) {
+		List<Transaction> transactions = Optional.ofNullable(transactionRepository.findAll()).orElseGet(() -> {
 			log.warn("No transactions found.");
-			return Collections.emptyMap(); // Return an empty map if no transactions exist
-		}
+			return Collections.emptyList();
+		});
+
+		log.info("Number of transactions fetched: {}", transactions.size());
 
 		return transactions.stream().filter(this::isValidTransaction)
 				.collect(Collectors.toMap(transaction -> transaction.getCustomer().getCustomerId(),
@@ -72,7 +66,7 @@ public class RewardServiceImpl implements RewardServiceIf {
 	 * @param transaction The transaction to validate.
 	 * @return true if the transaction is valid; false otherwise.
 	 */
-	private boolean isValidTransaction(Transaction transaction) {
+	public boolean isValidTransaction(Transaction transaction) {
 		boolean isValid = Optional.ofNullable(transaction).map(t -> t.getCustomer() != null && t.getAmount() != null)
 				.orElse(false);
 		log.info("Transaction valid: {} for transaction: {}", isValid, transaction);
@@ -86,14 +80,20 @@ public class RewardServiceImpl implements RewardServiceIf {
 	 * @return A CustomerReward object for the customer associated with the
 	 *         transaction.
 	 */
-	private CustomerReward createCustomerReward(Transaction transaction) {
+	public CustomerReward createCustomerReward(Transaction transaction) {
 		String customerId = transaction.getCustomer().getCustomerId();
+		String month = transaction.getTransactionDate().getMonth().toString();
 		int points = calculateRewardPoints(transaction.getAmount());
-		log.info("Calculating points for {}: {}", customerId, points);
+
+		log.info("Creating reward for customer: {} with points: {}", customerId, points);
 
 		CustomerReward reward = new CustomerReward();
 		reward.setCustomerId(customerId);
-		reward.setMonthlyPoints(points);
+		reward.setName(transaction.getCustomer().getName());
+		reward.setEmail(transaction.getCustomer().getEmail());
+
+		reward.setMonthlyPoints(new HashMap<>());
+		reward.getMonthlyPoints().put(month, points);
 		reward.setTotalPoints(points);
 		return reward;
 	}
@@ -105,10 +105,15 @@ public class RewardServiceImpl implements RewardServiceIf {
 	 * @param newReward The new CustomerReward to aggregate.
 	 * @return The updated CustomerReward with aggregated points.
 	 */
-	private CustomerReward aggregateRewards(CustomerReward existing, CustomerReward newReward) {
-		existing.setMonthlyPoints(existing.getMonthlyPoints() + newReward.getMonthlyPoints());
+	public CustomerReward aggregateRewards(CustomerReward existing, CustomerReward newReward) {
 		existing.setTotalPoints(existing.getTotalPoints() + newReward.getTotalPoints());
-		log.info("Aggregating rewards for {}: {}", existing.getCustomerId(), existing);
+
+		newReward.getMonthlyPoints().forEach((month, points) -> {
+			existing.getMonthlyPoints().merge(month, points, Integer::sum);
+		});
+
+		log.info("Aggregated rewards for customer: {} with new total points: {}", existing.getCustomerId(),
+				existing.getTotalPoints());
 		return existing;
 	}
 
@@ -121,11 +126,11 @@ public class RewardServiceImpl implements RewardServiceIf {
 	public int calculateRewardPoints(BigDecimal amount) {
 		return Optional.ofNullable(amount).map(a -> {
 			int points = 0;
-			if (a.compareTo(new BigDecimal("100")) > 0) {
-				points += (a.subtract(new BigDecimal("100"))).intValue() * 2;
+			if (a.compareTo(THRESHOLD_ONE) > 0) {
+				points += (a.subtract(THRESHOLD_ONE)).intValue() * 2;
 				points += 50;
-			} else if (a.compareTo(new BigDecimal("50")) > 0) {
-				points += (a.subtract(new BigDecimal("50"))).intValue();
+			} else if (a.compareTo(THRESHOLD_TWO) > 0) {
+				points += (a.subtract(THRESHOLD_TWO)).intValue();
 			}
 			return points;
 		}).orElse(0);

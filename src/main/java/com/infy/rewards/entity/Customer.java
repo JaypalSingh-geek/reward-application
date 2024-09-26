@@ -25,10 +25,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "customers")
 public class Customer implements Serializable {
 
-	public Customer(String string) {
-		// TODO Auto-generated constructor stub
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
