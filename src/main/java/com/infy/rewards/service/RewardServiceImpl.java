@@ -45,6 +45,7 @@ public class RewardServiceImpl {
 
 		try {
 			transactions = transactionRepository.findAll();
+			log.info("Number of transactions fetched: {}", transactions.size());
 		} catch (Exception e) {
 			log.error("Error occurred while fetching transactions: {}", e.getMessage());
 			throw new RewardNotFoundException("Failed to fetch transactions", "REWARD_NOT_FOUND", e);
@@ -55,21 +56,25 @@ public class RewardServiceImpl {
 			return new HashMap<>(); // Return an empty map if no transactions exist
 		}
 
-		return transactions.stream()
-				.filter(transaction -> Optional.ofNullable(transaction)
-						.map(t -> t.getCustomer() != null && t.getAmount() != null).orElse(false))
-				.collect(Collectors.toMap(transaction -> transaction.getCustomer().getCustomerId(), transaction -> {
-					int points = calculateRewardPoints(transaction.getAmount());
-					CustomerReward reward = new CustomerReward();
-					reward.setCustomerId(transaction.getCustomer().getCustomerId());
-					reward.setMonthlyPoints(points);
-					reward.setTotalPoints(points);
-					return reward;
-				}, (existing, newReward) -> {
-					existing.setMonthlyPoints(existing.getMonthlyPoints() + newReward.getMonthlyPoints());
-					existing.setTotalPoints(existing.getTotalPoints() + newReward.getTotalPoints());
-					return existing;
-				}));
+		return transactions.stream().filter(transaction -> {
+			boolean isValid = Optional.ofNullable(transaction)
+					.map(t -> t.getCustomer() != null && t.getAmount() != null).orElse(false);
+			log.info("Transaction valid: {} for transaction: {}", isValid, transaction);
+			return isValid;
+		}).collect(Collectors.toMap(transaction -> transaction.getCustomer().getCustomerId(), transaction -> {
+			int points = calculateRewardPoints(transaction.getAmount());
+			log.info("Calculating points for {}: {}", transaction.getCustomer().getCustomerId(), points);
+			CustomerReward reward = new CustomerReward();
+			reward.setCustomerId(transaction.getCustomer().getCustomerId());
+			reward.setMonthlyPoints(points);
+			reward.setTotalPoints(points);
+			return reward;
+		}, (existing, newReward) -> {
+			existing.setMonthlyPoints(existing.getMonthlyPoints() + newReward.getMonthlyPoints());
+			existing.setTotalPoints(existing.getTotalPoints() + newReward.getTotalPoints());
+			log.info("Aggregating rewards for {}: {}", existing.getCustomerId(), existing);
+			return existing;
+		}));
 	}
 
 	/**
@@ -85,7 +90,7 @@ public class RewardServiceImpl {
 		int points = 0;
 		if (amount.compareTo(new BigDecimal("100")) > 0) {
 			points += (amount.subtract(new BigDecimal("100"))).intValue() * 2;
-			points += 50;
+			points += 50; // Flat 50 points for the first $100
 		} else if (amount.compareTo(new BigDecimal("50")) > 0) {
 			points += (amount.subtract(new BigDecimal("50"))).intValue();
 		}

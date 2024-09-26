@@ -22,31 +22,26 @@ import com.infy.rewards.service.RewardServiceImpl;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class RewardControllerTest {
-	
-    @Autowired
-    private MockMvc mockMvc;
 
-    @MockBean
-    private RewardServiceImpl rewardService;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Test
-    public void testGetRewards_Positive() throws Exception {
-        // Mocking behavior for positive scenario
-        Map<String, CustomerReward> rewardsMap = new HashMap<>();
-        // Fill rewardsMap with data...
-        when(rewardService.calculateRewards()).thenReturn(rewardsMap);
+	@MockBean
+	private RewardServiceImpl rewardService;
 
-        mockMvc.perform(get("/api/rewards"))
-                .andExpect(status().isOk());
-    }
+	@Test
+	public void testGetRewards_Positive() throws Exception {
+		Map<String, CustomerReward> rewardsMap = new HashMap<>();
+		when(rewardService.calculateRewards()).thenReturn(rewardsMap);
+		mockMvc.perform(get("/api/rewards")).andExpect(status().isOk());
+	}
 
-    @Test
-    public void testGetRewards_NoTransactions() throws Exception {
-        // Mocking behavior for no transactions
-        when(rewardService.calculateRewards()).thenThrow(new RewardNotFoundException("No rewards found", "REWARD_NOT_FOUND", null));
+	@Test
+	public void testGetRewards_NoTransactions() throws Exception {
+		when(rewardService.calculateRewards())
+				.thenThrow(new RewardNotFoundException("No rewards found", "REWARD_NOT_FOUND", null));
 
-        mockMvc.perform(get("/api/rewards"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.errorCode").value("REWARD_NOT_FOUND"));
-    }
+		mockMvc.perform(get("/api/rewards")).andExpect(status().isNotFound())
+				.andExpect(jsonPath("$.errorCode").value("REWARD_NOT_FOUND"));
+	}
 }

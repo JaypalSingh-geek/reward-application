@@ -10,9 +10,8 @@ import lombok.Data;
 @Data
 public class RewardErrorResponse {
 
-    private String errorCode;
-    private String message;
-    private Object result;
-
+	private String errorCode;
+	private String message;
+	private Object result;
 
 }

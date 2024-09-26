@@ -2,7 +2,6 @@ package com.infy.rewards.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,9 +38,11 @@ public class Transaction {
 
 	@Column(name = "transaction_date", nullable = false)
 	private LocalDateTime transactionDate;
-	
-	public Transaction(Customer customer1, int i) {
-		// TODO Auto-generated constructor stub
-	}
 
+	// Constructor for initializing fields
+	public Transaction(Customer customer, BigDecimal amount, LocalDateTime transactionDate) {
+		this.customer = customer;
+		this.amount = amount;
+		this.transactionDate = transactionDate;
+	}
 }

@@ -5,15 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Data;
 
 /**
- *The customer reward class.
+ * The customer reward class.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerReward {
-	
-    private String customerId;
-    private int monthlyPoints;
-    private int totalPoints;
-    
+
+	private String customerId;
+	private int monthlyPoints;
+	private int totalPoints;
+
 }
