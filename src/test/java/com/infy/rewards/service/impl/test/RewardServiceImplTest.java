@@ -1,4 +1,4 @@
-package com.infy.rewards.service.test;
+package com.infy.rewards.service.impl.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
