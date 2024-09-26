@@ -25,6 +25,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "customers")
 public class Customer implements Serializable {
 
+	public Customer(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -41,5 +45,11 @@ public class Customer implements Serializable {
 	@Email
 	@Column(name = "email")
 	private String email;
+
+	public Customer(String customerId, String name, String email) {
+		this.customerId = customerId;
+		this.name = name;
+		this.email = email;
+	}
 
 }

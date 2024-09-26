@@ -39,7 +39,6 @@ public class Transaction {
 	@Column(name = "transaction_date", nullable = false)
 	private LocalDateTime transactionDate;
 
-	// Constructor for initializing fields
 	public Transaction(Customer customer, BigDecimal amount, LocalDateTime transactionDate) {
 		this.customer = customer;
 		this.amount = amount;
