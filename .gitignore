@@ -18,6 +18,21 @@ target/
 *.iws
 *.iml
 *.ipr
+# Ignore IDE-specific files
+.metadata/
+.mvn/
+
+# Ignore log files
+*.log
+*.gz
+*.tmp
+.metadata/
+.mvn/
+*.log
+*.gz
+*.tmp
+mvnw
+
 
 ### NetBeans ###
 /nbproject/private/
