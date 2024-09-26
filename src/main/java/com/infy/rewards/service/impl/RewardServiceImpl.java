@@ -1,4 +1,4 @@
-package com.infy.rewards.service;
+package com.infy.rewards.service.impl;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -16,6 +16,7 @@ import com.infy.rewards.entity.Transaction;
 import com.infy.rewards.exception.RewardNotFoundException;
 import com.infy.rewards.repository.TransactionRepository;
 import com.infy.rewards.response.model.CustomerReward;
+import com.infy.rewards.service.RewardServiceIf;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class RewardServiceImpl {
+public class RewardServiceImpl implements RewardServiceIf {
 
 	@Autowired
 	private TransactionRepository transactionRepository;

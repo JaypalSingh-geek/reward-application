@@ -21,7 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.infy.rewards.exception.RewardNotFoundException;
 import com.infy.rewards.repository.TransactionRepository;
 import com.infy.rewards.response.model.CustomerReward;
-import com.infy.rewards.service.RewardServiceImpl;
+import com.infy.rewards.service.impl.RewardServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 

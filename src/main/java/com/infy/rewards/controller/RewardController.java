@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.rewards.response.model.CustomerReward;
-import com.infy.rewards.service.RewardServiceImpl;
+import com.infy.rewards.service.RewardServiceIf;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RewardController {
 
 	@Autowired
-	private RewardServiceImpl rewardService;
+	private RewardServiceIf rewardService;
 
 	
 	@Operation(summary = "Get customer rewards", 

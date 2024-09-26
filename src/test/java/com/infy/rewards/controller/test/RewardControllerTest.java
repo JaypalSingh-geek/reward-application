@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.infy.rewards.exception.RewardNotFoundException;
 import com.infy.rewards.response.model.CustomerReward;
-import com.infy.rewards.service.RewardServiceImpl;
+import com.infy.rewards.service.impl.RewardServiceImpl;
 
 @SpringBootTest
 @AutoConfigureMockMvc
